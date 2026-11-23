@@ -2,8 +2,12 @@
 """One Word From Grandma — the single word grandma would text about AI.
 
 Grandma heard "AI" on the evening news and texted back the way it sounds:
-"AyeEye". One word, no explanation, exactly what she would send — a
-phonetic grandma-ism, still unmistakably about AI.
+"AyeEye". The charm is the confidence, not the confusion — she never asks
+what it is or looks it up, she just sounds out the two letters and sends
+them with total certainty. The mixed case is how she types: one finger,
+capitalising whatever feels important. One word, no explanation, and the
+whole scene is in it — a phonetic grandma-ism that is still unmistakably
+about AI.
 """
 
 import os
@@ -14,7 +18,9 @@ TEXT = "AyeEye"
 
 def main() -> int:
     text = TEXT
-    # Gate: exactly one word — UTF-8, non-empty, no whitespace, letters only.
+    # Gate: exactly one word. Each check guards one way the entry could
+    # stop being a single word: stray surrounding whitespace, an internal
+    # space splitting it in two, or punctuation/digits breaking the rule.
     if not text or text.strip() != text:
         print("gate failed: entry is empty or has surrounding whitespace", file=sys.stderr)
         return 1
